@@ -10,7 +10,7 @@ on:
       package_name:
         description: 'Package Name'
         required: true
-        default: 'Xbox_Linux'
+        default: 'textie'
 
 jobs:
   build:
@@ -52,7 +52,6 @@ jobs:
         run: |
           msbuild /restore `
             "$env:SolutionPath" `
-            /target:"Xbox Linux" `
             /p:Platform=$env:Platform `
             /p:Configuration=$env:Configuration `
             /p:UapAppxPackageBuildMode=$env:BuildMode `
