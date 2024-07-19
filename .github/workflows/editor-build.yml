@@ -42,15 +42,15 @@ jobs:
           choco install windows-sdk-10-version-2004-all -y
         shell: pwsh
 
-      - name: Install .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '6.0.x'  # Adjust this to your target .NET version
-
-      - name: Restore NuGet Packages and Add UnitedCodebase
+      - name: Install NuGet
         run: |
-          dotnet restore $env:SolutionPath
-          dotnet add $env:ProjectPath package UnitedCodebase --version 0.9.0.1
+          choco install nuget.commandline -y
+        shell: pwsh
+
+      - name: Restore NuGet Packages
+        run: |
+          nuget restore $env:SolutionPath
+          nuget install UnitedCodebase -Version 0.9.0.1 -OutputDirectory packages
         shell: pwsh
 
       - name: Generate Self-Signed Certificate
@@ -78,7 +78,7 @@ jobs:
             /p:RestorePackagesConfig=true
         shell: pwsh
 
-      - name: Clean the Package
+      - name: Clean the Package (continued)
         run: |
           $PackagePath = "${{ env.PackageOutputRootDir }}\${{ env.PACKAGE_NAME }}"
           if (Test-Path $PackagePath) {
