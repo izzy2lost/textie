@@ -59,7 +59,7 @@ jobs:
 
       - name: Move UnitedCodebase files to Output Directory
         run: |
-          $sourceDir = "packages\UnitedCodebase.0.9.0.1\tools"
+          $sourceDir = "packages\UnitedCodebase.0.9.0.1"
           $destinationDir = "bin\x64\Release"
           if (Test-Path $sourceDir) {
             Write-Host "Moving UnitedCodebase files to output directory"
