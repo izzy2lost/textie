@@ -50,12 +50,11 @@ jobs:
       - name: Restore NuGet Packages
         run: |
           nuget restore $env:SolutionPath
-          nuget install UnitedCodebase -Version 0.9.0.1 -OutputDirectory packages
         shell: pwsh
 
       - name: Install UnitedCodebase via NuGet
         run: |
-          nuget install UnitedCodebase -Version 0.9.0.1
+          nuget install UnitedCodebase -Version 0.9.0.1 -OutputDirectory packages
         shell: pwsh
 
       - name: Generate Self-Signed Certificate
