@@ -67,7 +67,7 @@ jobs:
 
       - name: App Build
         run: |
-          msbuild
+          msbuild `
             "$env:SolutionPath" `
             /p:Platform=$env:Platform `
             /p:Configuration=$env:Configuration `
