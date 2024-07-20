@@ -33,10 +33,11 @@ jobs:
 
       - name: Download and Extract Repository
         run: |
-          gdown https://drive.google.com/uc?id=1a7WTTHKwpmci8rhIO9JQxT_SsV429Fs4 -O repo.zip
-          Expand-Archive -Path repo.zip -DestinationPath .
-          Move-Item -Path "/*" -Destination "." -Force
-          Remove-Item -Recurse -Force "textie"
+         gdown https://drive.google.com/uc?id=1a7WTTHKwpmci8rhIO9JQxT_SsV429Fs4 -O repo.zip
+         Remove-Item -Path .\textie\* -Recurse -Force -ErrorAction SilentlyContinue
+         Expand-Archive -Path repo.zip -DestinationPath . -Force
+         Move-Item -Path "textie/*" -Destination "." -Force
+         Remove-Item -Recurse -Force "textie"
         shell: pwsh
         
       - name: Setup MSBuild
