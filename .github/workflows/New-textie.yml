@@ -52,14 +52,6 @@ jobs:
           nuget restore $env:SolutionPath
         shell: pwsh
         
-      - name: Build UnitedCodebase
-        run: |
-          msbuild `
-            "UnitedCodebase/src/UnitedCodebase.sln" `
-            /p:Configuration=Release `
-            /p:Platform=x64
-        shell: pwsh
-
       - name: Generate Self-Signed Certificate
         id: generate_cert
         run: |
