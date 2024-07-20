@@ -55,7 +55,7 @@ jobs:
       - name: Build UnitedCodebase
         run: |
           msbuild `
-            "UnitedCodebase/src/UnitedCodebase.WinRT/UnitedCodebase.WinRT.csproj" `
+            "UnitedCodebase/src/UnitedCodebase.sln" `
             /p:Configuration=Release `
             /p:Platform=x64
         shell: pwsh
