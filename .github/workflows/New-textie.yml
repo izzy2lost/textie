@@ -51,15 +51,11 @@ jobs:
         run: |
           nuget restore $env:SolutionPath
         shell: pwsh
-
-      - name: Clone UnitedCodebase Repo
-        run: |
-          git clone https://github.com/10Develops/UnitedCodebase.git
         
       - name: Build UnitedCodebase
         run: |
           msbuild `
-            "src/UnitedCodebase.sln" `
+            "UnitedCodebase/src/UnitedCodebase.WinRT/UnitedCodebase.WinRT.csproj" `
             /p:Configuration=Release `
             /p:Platform=x64
         shell: pwsh
