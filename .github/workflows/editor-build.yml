@@ -1,3 +1,4 @@
+
 name: Editor Builder
 
 on:
@@ -28,15 +29,14 @@ jobs:
       PackageOutputDir: "textie/textie/textie"
 
     steps:
-      - name: Install gdown
-        run: pip install gdown
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-      - name: Download and Extract Repository
-        run: |
-         gdown https://drive.google.com/uc?id=1a7WTTHKwpmci8rhIO9JQxT_SsV429Fs4 -O repo.zip
-         Expand-Archive -Path repo.zip -DestinationPath . -Force
-        shell: pwsh
-        
+      - name: Checkout tag 0.9.5
+        run: git checkout tags/0.9.5
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
 
@@ -67,7 +67,6 @@ jobs:
         id: set_package_name
         run: |
           echo "PACKAGE_NAME=${{ github.event.inputs.package_name }}_${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
-
       - name: App Build
         run: |
           msbuild `
