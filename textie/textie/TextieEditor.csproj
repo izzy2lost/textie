@@ -303,7 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnitedCodebase">
-      <HintPath>..\..\..\Projects\UnitedCodebase\UnitedCodebase\bin\Release\UnitedCodebase.dll</HintPath>
+      <HintPath>UnitedCodebase/build/UnitedCodebase/UnitedCodebase.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
