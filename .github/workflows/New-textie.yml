@@ -51,6 +51,10 @@ jobs:
         run: |
           nuget restore $env:SolutionPath
         shell: pwsh
+
+      - name: Clone UnitedCodebase Repo
+        run: |
+          git clone https://github.com/10Develops/UnitedCodebase.git
         
       - name: Build UnitedCodebase
         run: |
